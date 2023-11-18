@@ -8,19 +8,13 @@ public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String username;
-    private String address;
+    private String birthday;
+    private String email;
 
-    public User(String username, String address) {
+    public User(String username, String birthday, String email) {
         this.username = username;
-        this.address = address;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.birthday = birthday;
+        this.email = email;
     }
 
     public String getUsername() {
@@ -31,11 +25,29 @@ public class User {
         this.username = username;
     }
 
-    public String getAddress() {
-        return address;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 }

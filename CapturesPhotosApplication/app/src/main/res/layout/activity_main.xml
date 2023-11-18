@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Click on the camera button to start the camera!"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btncamera"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        />
+
+    <Button
+        android:id="@+id/btncamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+       />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imgview"
+        android:layout_below="@+id/btncamera"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rcv_image"
+        android:layout_above="@+id/text"
+        />
+
+</RelativeLayout>

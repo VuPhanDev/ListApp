@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.vuphan.listform.User;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class}, version = 2)
 public abstract class UserDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "user.database";
     private static UserDatabase instance;
@@ -16,6 +16,7 @@ public abstract class UserDatabase extends RoomDatabase {
     public static synchronized UserDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, DATABASE_NAME)
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
         }

@@ -36,7 +36,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
 
         holder.tvUserName.setText(user.getUsername());
-        holder.tvAddress.setText(user.getAddress());
+        holder.tvBirthDay.setText(user.getBirthday());
+        holder.tvEmail.setText(user.getEmail());
+
     }
 
     @Override
@@ -45,12 +47,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvUserName, tvAddress;
+        private TextView tvUserName, tvBirthDay, tvEmail;
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvUserName = itemView.findViewById(R.id.tv_username);
-            tvAddress = itemView.findViewById(R.id.tv_address);
+            tvBirthDay = itemView.findViewById(R.id.tv_birthday);
+            tvEmail = itemView.findViewById(R.id.tv_email);
         }
     }
 }

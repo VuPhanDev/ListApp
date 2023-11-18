@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private EditText edUserName, edAddress;
+    private EditText edUserName, edBirthDay, edEmail;
     private Button btnAddUser;
     private RecyclerView rcvUser;
     private UserAdapter userAdapter;
@@ -52,25 +51,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
         edUserName = findViewById((R.id.ed_username));
-        edAddress = findViewById((R.id.ed_address));
+        edBirthDay = findViewById((R.id.ed_birthday));
+        edEmail = findViewById((R.id.ed_email));
         btnAddUser = findViewById((R.id.btn_add_user));
         rcvUser = findViewById((R.id.rcv_user));
     }
 
     private void addUser() {
         String userName = edUserName.getText().toString().trim();
-        String address = edAddress.getText().toString().trim();
+        String birthDay = edBirthDay.getText().toString().trim();
+        String email = edEmail.getText().toString().trim();
 
-        if(TextUtils.isEmpty(userName) || TextUtils.isEmpty(address)){
+        if(TextUtils.isEmpty(userName) || TextUtils.isEmpty(birthDay) || TextUtils.isEmpty(email) ){
             return;
         }
 
-        User user = new User(userName, address);
+        User user = new User(userName, birthDay, email);
         UserDatabase.getInstance(this).userDAO().insertUser(user);
         Toast.makeText(this, "Add user success!", Toast.LENGTH_SHORT).show();
 
-        edAddress.setText("");
         edUserName.setText("");
+        edBirthDay.setText("");
+        edEmail.setText("");
+
         hideSoftKeyboard();
         mListUser = UserDatabase.getInstance(this).userDAO().getListUsers();
         userAdapter.setData(mListUser);
