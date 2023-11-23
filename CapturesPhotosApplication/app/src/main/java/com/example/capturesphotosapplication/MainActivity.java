@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         rcvImage.setLayoutManager(linearLayoutManager);
         rcvImage.setAdapter(imageAdapter);
 
+        imageAdapter.setOnImageClickListener(this::showImagePopup);
+
         btnPicture.setOnClickListener(view -> {
             if (checkCameraPermission()) {
                 openCamera();
@@ -115,5 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
         mListImage = ImageDatabase.getInstance(this).imageDAO().getListImages();
         imageAdapter.setData(mListImage);
+    }
+
+    private void showImagePopup(Bitmap imageBitmap) {
+        ImagePopupDialog imagePopupDialog = new ImagePopupDialog(this);
+        imagePopupDialog.setImage(imageBitmap);
+        imagePopupDialog.show();
     }
 }

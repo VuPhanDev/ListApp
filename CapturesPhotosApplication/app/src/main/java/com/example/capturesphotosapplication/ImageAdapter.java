@@ -15,10 +15,18 @@ import java.util.List;
 
 public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.ImageViewHodel>{
     private List<ImageEntity> mListImage;
+    private OnImageClickListener mOnImageClickListener;
     @SuppressLint("NotifyDataSetChanged")
     public void setData(List<ImageEntity> list){
         this.mListImage = list;
         notifyDataSetChanged();
+    }
+    public interface OnImageClickListener {
+        void onImageClick(Bitmap imageBitmap);
+    }
+
+    public void setOnImageClickListener(OnImageClickListener listener) {
+        this.mOnImageClickListener = listener;
     }
 
     @NonNull
@@ -36,6 +44,11 @@ public class ImageAdapter extends  RecyclerView.Adapter<ImageAdapter.ImageViewHo
         }
         Bitmap bitmap = BitmapFactory.decodeByteArray(image.getImageData(), 0, image.getImageData().length);
         holder.imageView.setImageBitmap(bitmap);
+        holder.imageView.setOnClickListener(v -> {
+            if (mOnImageClickListener != null) {
+                mOnImageClickListener.onImageClick(bitmap);
+            }
+        });
     }
 
     @Override
